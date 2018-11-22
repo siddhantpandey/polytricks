@@ -1,0 +1,174 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm mt-3">
+      <mat-card class="profile-card">
+        <mat-card-header>
+
+          <mat-card-title><a class="Name" href="/profile/{{politiciandata.pId}}">
+              <h4>{{politiciandata.pName}}</h4>
+            </a></mat-card-title>
+          <mat-card-subtitle>{{politiciandata.pParty.partyName}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="assets/images/{{politiciandata.pId}}.png" height=300px alt="Photo of a {{politiciandata.pName}}">
+        <mat-card-content>
+          <p> Age : {{politiciandata.pAge}}</p>
+          <p>State : {{politiciandata.pState}}</p>
+          <p class="info-det" *ngIf="politiciandata.pParlConstituency">Constituency :
+            {{politiciandata.pParlConstituency}}</p>
+          <p class="info-det" *ngIf="politiciandata.pStateConstituency">Constituency :
+            {{politiciandata.pStateConstituency}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="flip-container col-sm mt-3">
+      <div class="flipper">
+        <mat-card class="popularity-card front">
+          <mat-card-header>
+            <mat-card-title>Popularity Index</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="progress" style="height: 30px;">
+              <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width.%':politiciandata.stats.popularityIndex}"
+                aria-valuemin="0" aria-valuemax="100">{{politiciandata.stats.popularityIndex|number:'1.0-0'}}</div>
+            </div>
+          </mat-card-content>
+          <mat-card-content>
+            <h5>Likes: {{politiciandata.stats.likeCount}} </h5>
+            <div class="progress" style="height: 30px;">
+              <div class="progress-bar bg-primary" role="progressbar" [ngStyle]="{'width.%':politiciandata.stats.likeCount*100/stats[0]}"
+                aria-valuemin="0" aria-valuemax="100">{{politiciandata.stats.likeCount*100/stats[0]|number:'1.0-0'}}%</div>
+            </div>
+          </mat-card-content>
+          <mat-card-content>
+            <h5>Dislikes: {{politiciandata.stats.dislikeCount}} </h5>
+            <div class="progress" style="height: 30px;">
+              <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width.%':politiciandata.stats.dislikeCount*100/stats[1]}"
+                aria-valuenow="politiciandata.stats.dislikeCount/stats[1]" aria-valuemin="0" aria-valuemax="100">{{politiciandata.stats.dislikeCount*100/stats[1]|number:'1.0-0'}}%</div>
+            </div>
+          </mat-card-content>
+          <!-- <div class="status-profile" *ngIf="healthy">
+            <h1>healthy</h1>
+          </div>
+          <div class="status-profile" *ngIf="unhealthy">
+            <h1>not healthy</h1>
+          </div> -->
+        </mat-card>
+        <mat-card class="back">
+          <mat-card-header>
+            <mat-card-title>Politician Activities</mat-card-title>
+
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="col-sm scrollComments">
+              <div class="card mt-1">
+                <div *ngFor="let act of politiciandata.activities">
+                  <div class="card-header">
+                    <h5 class="card-title">{{act.actName}}</h5>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">{{act.actDescription}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="col-sm mt-3">
+      <mat-card class="comment-card">
+        <mat-card-header>
+          <mat-card-title>Comments</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="col-sm scrollComments">
+            <div *ngFor="let c of politiciandata.comments">
+              <div class="card mt-1">
+                <div class="card-header">
+                  <h5 class="card-title">
+                    {{c.user.uName}}
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">{{c.uComment}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{comments.user.uName}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Thank you for your valuable feedback!
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container mt-3">
+  <div class="card" [hidden]="formDisabled">
+    <div class="card-header ">
+      Feedback
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="publish()">
+        <div class="form-row">
+          <div class="form-group col-md-6 example-container">
+            <mat-form-field>
+              <input type="email" matInput class="form-control" id="inputEmail" name="inputEmail" [(ngModel)]="comments.user.uEmailId"
+                #inputEmail=ngModel placeholder="Email" required>
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6 example-container">
+            <mat-form-field>
+              <input type="text" matInput class="form-control" id="inputName" name="inputName" [(ngModel)]="comments.user.uName"
+                #inputName=ngModel placeholder="Name" required>
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-12 example-container">
+            <mat-form-field>
+              <input type="text" matInput class="form-control" id="inputComment" name="inputComment" [(ngModel)]="comments.uComment"
+                #inputComment=ngModel placeholder="Comment">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-12">
+            <label>Do You Like this politician?</label>
+
+            <button mat-button type="button" (click)="like()">
+              <i class="material-icons" [ngStyle]="{'color':'blue'}">
+                thumb_up_alt
+              </i>
+            </button>
+
+            <button mat-button type="button" (click)="dislike()">
+              <i class="material-icons" [ngStyle]="{'color':'red'}">
+                thumb_down_alt
+              </i>
+            </button>
+
+          </div>
+        </div>
+        <button type="submit"  class="btn btn-primary" [disabled]="buttonDisabled" data-toggle="modal" data-target="#exampleModal"
+(click)="function()">Publish</button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

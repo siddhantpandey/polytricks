@@ -1,0 +1,86 @@
+
+<div class="popular-politicians">
+
+
+  <div *ngFor="let a of popularpoliticians" class="col-sm">
+
+
+    <div class="card">
+      <div class="wrapper">
+        <div class="date">
+          <div class="likeCount">{{a.stats.popularityIndex|number :'1.0-0'}} %</div>
+          <div class="likes"></div>
+
+        </div>
+        <img class="imgofp" src="/assets/images/{{a.pId}}.png">
+        <div class="data">
+          <div class="content">
+            <div class="politicianName"><a href="/profile/{{a.pId}}">{{a.pName}}</a> </div>
+            <h1 class="party" style="color:#2c3e50"> {{a.pParty.partyName}}</h1>
+
+            <ul>
+              <h6 class="text" *ngFor="let act of a.activities">
+                <li> {{act.actName}}</li>
+              </h6>
+            </ul>
+            <label for="{{a.pId}}" class="menu-button">
+              <div><i class="fa fa-plus-circle fa-2x"></i></div>
+
+            </label>
+
+            <input type="checkbox" id="{{a.pId}}" />
+            <ul class="menu-content">
+              <li>
+                <a class="fa fa-thumbs-o-up"></a>
+                <div>{{a.stats.likeCount}}</div>
+              </li>
+              <li><a class="fa fa-thumbs-o-down"></a>
+                <div>{{a.stats.dislikeCount}}</div>
+              </li>
+              <li><a class="fa fa-comment-o" (click)="commentFunc(a.pId)"></a>
+                <div>{{a.stats.Comments}}</div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <mat-form-field style="width: 100%" class="back">
+    <div id="landing">
+
+      <div class="main">
+
+
+
+        <div>
+          <input type="text" class="search" [(ngModel)]="state" matInput [formControl]="myControl" [matAutocomplete]="auto"
+            (keydown)="onKeydown($event)">
+
+
+
+          <div class="line-1"></div>
+          <div class="line-2"></div>
+        </div>
+      </div>
+
+
+    </div>
+  </mat-form-field>
+
+  <mat-autocomplete class="listdiv" #auto="matAutocomplete" style="text-align: center" style="max-width:100px">
+    <mat-option class="options" id="autolist" *ngFor="let option of filteredOptions | async" [value]="option" (click)="MyFunc()">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+  <div class="gap"></div>
+<app-footer></app-footer>
+
+

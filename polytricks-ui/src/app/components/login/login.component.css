@@ -1,0 +1,119 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  
+  .form-control:focus {
+    border-color: #fff;
+    box-shadow: 0px 1px 1px #fff inset, 0px 0px 8px #fff;
+  }
+  
+
+
+input{
+    width:300%;
+}
+
+mat-form-field{
+    width:100%
+}
+
+.bottom-gif{
+    float:right;
+    margin-right:10%;
+}
+
+
+.login{
+    margin-top:200px;
+}
+
+.gifImgs{
+    height:20%;
+    width:20%;
+}
+
+
+
+@media screen and (prefers-reduced-motion: reduce) {
+    .mybtn {
+      transition: none;
+    }
+  }
+  
+  .mybtn:hover,
+  .mybtn:focus {
+    text-decoration: none;
+  }
+  
+  .mybtn:focus,
+  .mybtn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #2980b9;
+  }
+  
+  .mybtn.disabled,
+  .mybtn:disabled {
+    opacity: 0.65;
+  }
+  
+  .mybtn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+  
+  a.mybtn.disabled,
+  fieldset:disabled a.mybtn {
+    pointer-events: none;
+  }
+  
+  .mybtn-nav {
+    color: #fff;
+    background-color: #40739e;
+    border-color: #40739e;
+  }
+  
+  .mybtn-nav:hover {
+    color: #fff;
+    background-color: #2980b9;
+    border-color: #2980b9;
+  }
+  .card-header {
+    background-color: #40739e;
+    height: auto;
+    color: white;
+  }
+
+
+  .login{
+    margin-top:200px;
+}
+  
+  .mybtn-nav:focus,
+  .mybtn-nav.focus {
+    box-shadow: 0 0 0 0rem #2980b9;
+  }
+  
+  .mybtn-nav.disabled,
+  .mybtn-nav:disabled {
+    color: #fff;
+    background-color: #2980b9;
+    border-color: #2980b9;
+  }
+  
+  .mybtn-nav:not(:disabled):not(.disabled):active,
+  .mybtn-nav:not(:disabled):not(.disabled).active,
+  .show > .mybtn-nav.dropdown-toggle {
+    color: #fff;
+    background-color: #2980b9;
+    border-color: #2980b9;
+  }
+  
+  .mybtn-nav:not(:disabled):not(.disabled):active:focus,
+  .mybtn-nav:not(:disabled):not(.disabled).active:focus,
+  .show > .mybtn-nav.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0 #2980b9;
+  }

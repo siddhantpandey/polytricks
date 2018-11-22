@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <img src="../../../assets/images/poli2.gif" width="50" height="50" class="d-inline-block align-top" alt="">
+  <a class="navbar-brand" routerLink="/">PolyTricks</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li>
+        <a class="nav-link" href="">{{sValue}}</a>
+      </li>
+    </ul>
+
+
+    <form class="form-inline">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="btn-group">
+            <button type="button" class="mybtn mybtn-nav" (click)="doChangeField('pName',srch)">
+              <img src="assets/images/pnameIcon.png" height=20px width=20px>
+            </button>
+            <button type="button" class="mybtn mybtn-nav" (click)="doChangeField('pParty',srch)">
+              <img src="assets/images/partyIcon.png" height=20px width=20px>
+            </button>
+            <button type="button" class="mybtn mybtn-nav" (click)="doChangeField('pState',srch)">
+              <img src="assets/images/pstateIcon.png" height=20px width=20px>
+            </button>
+          </div>
+        </div>
+        <input type="text" name="srchVal" class="form-control" [(ngModel)]="srchVal" required #srch placeholder="State" />
+        <div class="input-group-prepend">
+          <button class="mybtn mybtn-nav" (click)="doSearch(srch.value)">
+            
+            <img src="assets/images/searchIcon.png" height=20px width=20px>
+          </button>
+        </div>
+      </div>
+    </form>
+
+
+
+
+
+
+
+
+
+
+    <!--
+  
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+  
+  -->
+
+
+
+ 
+    <button class="mybtn mybtn-nav" routerLink="/login" *ngIf="!loginStatus">Login</button>
+    <button class="mybtn mybtn-nav" routerLink="/register" *ngIf="!loginStatus">Register</button>
+    <button class="mybtn mybtn-nav" (click)="logout()" *ngIf="loginStatus">Logout</button>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
+  
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+  
+  -->
+
+
+
+  </div>
+</nav>
+

@@ -1,0 +1,38 @@
+
+
+<div class="container login col-md-4">
+  <div class="card " >
+    <div class="card-header ">
+      <strong>Login</strong>
+    </div>
+    <div class="card-body ">
+      <form (ngSubmit)="login()">
+        <div class="example-container">
+          <div class="form-group col-md-12">
+            <mat-form-field>
+              <input type="text" matInput class="form-control" id="username" name="username" [(ngModel)]="username" 
+                 placeholder="Username">
+            </mat-form-field>
+            
+          </div>
+          <div class="form-group col-md-12">
+            <mat-form-field>
+                <input type="password" matInput class="form-control" id="password" name="password" [(ngModel)]="password"
+                placeholder="Password">
+            </mat-form-field>
+          </div>
+          
+          
+        </div>
+        <button type="submit" class="mybtn mybtn-nav"   >Login</button>
+      </form>
+      <div>
+      New User???<a href="register">Register</a>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<img src="../../../assets/poli1.gif" class="bottom-gif gifImgs">
+-->

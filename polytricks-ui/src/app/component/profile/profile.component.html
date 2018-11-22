@@ -1,0 +1,162 @@
+
+
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-sm-9 m-auto" *ngIf="!politician">
+
+        </div>
+
+        <div class="col-md-9 m-auto">
+            <h1 class="mb-5 mt-5">
+                {{politician.pName}}'s <span style="font-size: 22px">profile</span>
+            </h1>
+
+
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs nav-justified profile-tab">
+                        <li class="nav-item active">
+                            <a class="nav-link active show" routerLink="/profile/{{politician.pId}}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/activity/{{politician.pId}}">Activity
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div class="btn-group float-right">
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="assets/images/{{politician.pId}}.png" class="img-fluid" />
+                        </div>
+
+                        <div class="col-md-9 ">
+                            <table class="leader-info-list" cellpadding="15">
+
+                                <tbody class="align-top">
+                                    <tr>
+                                        <td>
+                                            <span class="info-list-icon">
+                                                <img alt="info" src="../../../assets/images/iconAge.png" height=20px
+                                                    width=20px>
+                                            </span>&nbsp;
+                                            <label>AGE</label>
+                                        </td>
+                                        <td>
+                                            <span class="info-det">{{politician.pAge}}</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span class="info-list-icon">
+                                                <img alt="info" src="../../../assets/images/iconGender.png" height=20px
+                                                    width=20px>
+                                            </span>&nbsp;
+                                            <label>GENDER</label>
+                                        </td>
+                                        <td>
+                                            <span class="info-det">{{politician.pGender}}</span>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td>
+                                            <span class="info-list-icon">
+                                                <img alt="info" src="../../../assets/images/iconEdu.png" height=20px
+                                                    width=20px>
+                                            </span>&nbsp;
+                                            <label>QUALIFICATION</label>
+                                        </td>
+                                        <td>
+                                            <span class="info-det">{{politician.pEducation}}</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span class="info-list-icon">
+                                                <img alt="info" src="../../../assets/images/iconProf.png" height=20px
+                                                    width=20px>
+                                            </span>&nbsp;
+                                            <label>PROFESSION</label>
+                                        </td>
+                                        <td>
+                                            <span class="info-det">{{politician.pProfession}}</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span class="info-list-icon">
+                                                <img alt="info" src="../../../assets/images/iconIncome.png" height=20px
+                                                    width=20px>
+                                            </span>&nbsp;
+                                            <label>INCOME</label>
+                                        </td>
+                                        <td>
+                                            <span class="info-det">
+                                                ₹{{politician.pIncome}}L</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="info-list-icon">
+                                                <img alt="info" src="../../../assets/images/iconAssets.png" height=20px
+                                                    width=20px>
+                                            </span>&nbsp;
+                                            <label>ASSETS</label>
+                                        </td>
+                                        <td>
+                                            <span class="info-det">
+                                                ₹{{politician.pAssets}}L</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="info-list-icon">
+                                                <img alt="info" src="../../../assets/images/iconConst.png" height=20px
+                                                    width=20px>
+                                            </span>&nbsp;
+                                            <label>CONSTITUENCY</label>
+                                        </td>
+                                        <td>
+                                            <span class="info-det" *ngIf="politician.pParlConstituency">{{politician.pParlConstituency}}</span>
+                                            <span class="info-det" *ngIf="politician.pStateConstituency">{{politician.pStateConstituency}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="info-list-icon">
+                                                <img alt="info" src="../../../assets/images/iconState.png" height=20px
+                                                    width=20px>
+
+                                            </span>&nbsp;
+
+                                            <label>STATE</label>
+                                        </td>
+                                        <td>
+                                            <span class="info-det">{{politician.pState}}</span>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <a href="/comment/{{politician.pId}}" class="mybtn mybtn-nav">Comment</a>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+<app-footer></app-footer>

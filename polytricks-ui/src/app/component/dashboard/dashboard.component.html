@@ -1,0 +1,50 @@
+
+<div class="container">
+
+  <div class="alert alert-warning" *ngIf="!allpoliticians || allpoliticians.length==0">
+    <fa name="exclamation-triangle"></fa> Records could not be found or loaded
+  </div>
+  <div *ngFor="let a of allpoliticians" class="col-sm">
+
+
+    <div class="card">
+      <div class="wrapper">
+        <div class="date">
+          <div class="likeCount">{{a.stats.popularityIndex|number :'1.0-0'}}%</div>
+          <div class="likes"></div>
+
+        </div>
+        <img class="imgofp" src="/assets/images/{{a.pId}}.png">
+        <div class="data">
+          <div class="content">
+            <div class="politicianName"><a href="/profile/{{a.pId}}">{{a.pName}}</a> </div>
+            <h1 class="party"> {{a.pParty.partyName}}</h1>
+            <ul>
+              <h6 class="text" *ngFor="let act of a.activities">
+                <li> {{act.actName}}</li>
+              </h6>
+            </ul>
+            <label for="{{a.pId}}" class="menu-button">
+              <div><i class="fa fa-plus-circle fa-2x"></i></div>
+
+            </label>
+
+            <input type="checkbox" id="{{a.pId}}" />
+            <ul class="menu-content">
+              <li>
+                <a class="fa fa-thumbs-o-up"></a>
+                <div>{{a.stats.likeCount}}</div>
+              </li>
+              <li><a class="fa fa-thumbs-o-down"></a>
+                <div>{{a.stats.dislikeCount}}</div>
+              </li>
+              <li><a class="fa fa-comment-o" (click)="commentFunc(a.pId)"></a>
+                <div>{{a.stats.Comments}}</div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>

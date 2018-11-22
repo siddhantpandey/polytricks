@@ -1,0 +1,65 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-sm-9 m-auto" *ngIf="!politician">
+      <!-- <h3>
+        Loading
+        <!-- <fa name="cog" animation="spin"></fa> Loading -->
+      <!-- </h3>  -->
+    </div>
+
+    <div class="col-md-9 m-auto">
+      <h1 class="mb-5 mt-5">
+        {{politician.pName}}'s <span style="font-size: 22px">Activities</span>
+      </h1>
+
+      <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs nav-justified profile-tab">
+            <li class="nav-item">
+              <a class="nav-link " routerLink="/profile/{{politician.pId}}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active show" routerLink="/activity/{{politician.pId}}">Activity
+              </a>
+            </li>
+
+          </ul>
+          <!-- <h5 class="float-left">{{politician.pName}}</h5> -->
+          <div class="btn-group float-right">
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <img src="assets/images/{{politician.pId}}.png" class="img-fluid" />
+            </div>
+
+            <div class="col-md-9 ">
+              <table class="leader-info-list" cellpadding="15">
+                <div class="col-md-12 " class="activities">
+                  <br>
+                  <div *ngFor="let n of politician.activities">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title"><a>{{n.actName}}</a></h4>
+                        <p class="card-text">{{n.actDescription}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </table>
+            </div>
+          </div>
+        </div>
+        <a href="/comment/{{politician.pId}}" class="mybtn mybtn-nav">Comment</a>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+<app-footer></app-footer>

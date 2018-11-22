@@ -1,0 +1,17 @@
+body {
+    background-color: #112233;
+  }
+  
+  footer {
+    background-color: #192a56;
+    box-shadow: 0 4px 8px 0 rgba(230, 10, 10, 0.2);
+    transition: 0.5s;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
+    color: #dfe6e9;
+  }
+  
